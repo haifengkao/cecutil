@@ -270,7 +270,9 @@ fun! RestoreMark(markname)
 
   let lzkeep  = &lz
   set lz
-  let winposn = SaveWinPosn(0)
+  " HF: RestoreWinPosn will make cursor move one line above it's original
+  " position. Don't know why.
+  "let winposn = SaveWinPosn(0)
 
   if strlen(a:markname) <= 2
    if exists("g:savemark_{markname}") && strlen(g:savemark_{markname}) != 0
@@ -287,7 +289,9 @@ fun! RestoreMark(markname)
    exe "norm! m".markname
   endif
 
-  call RestoreWinPosn(winposn)
+  " HF: RestoreWinPosn will make cursor move one line above it's original
+  " position. Don't know why.
+  "call RestoreWinPosn(winposn)
   let &lz       = lzkeep
 
 "  call Dret("RestoreMark")
